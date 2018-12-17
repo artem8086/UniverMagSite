@@ -1,0 +1,11 @@
+-
+	function locale(key, language) {
+		return langDB[language || lang][key]
+	}
+
+	var lang = null,
+		langDB = {
+			ru: {
+				title_summary: 'Резюме - Святоха Артём Алесандрович'
+			}
+		};

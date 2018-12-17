@@ -1,0 +1,43 @@
+.preloader
+	display flex
+	z-index 10
+	background-color #000
+	visibility visible
+	transition 1.5s all
+
+	&__wrapper
+		margin auto
+		text-align center
+	.logo
+		background-image url("../img/artsoft.png")
+		background-repeat no-repeat
+		background-size contain
+		background-position center
+		width 569px
+		height 104px
+
+	.loader
+		margin 40px auto 40px auto
+		transform-origin center
+		width 64px
+		height 64px
+		border 8px solid #ccc
+		border-top-color #33f
+		border-radius 100%
+		animation 1s spin infinite linear
+		box-shadow 0 0 3px rgba(1,1,1,0.5)
+
+	&.done
+		opacity 0
+		visibility hidden
+		.loader
+			visibility hidden
+
+@keyframes spin
+	from
+		transform rotate(0deg)
+	
+	to
+		transform rotate(360deg)
+	
+

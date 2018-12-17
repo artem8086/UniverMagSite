@@ -1,0 +1,34 @@
+.main-menu
+	display flex
+
+.mm-wrapper
+	position absolute
+	top 40%
+	right 10%
+	
+	&__button
+		position relative
+		width 280px
+		margin 4px 0
+		padding 8px 20px
+		font-size 24px
+		text-align right
+		background-image linear-gradient(to right, transparent 15%, rgba(180, 180, 180, .7))
+		user-select none
+		transition all .2s ease-in-out
+
+		&:after
+			position absolute
+			top 0
+			right 0
+			display block
+			width 4px
+			height 100%
+			background-color #00f
+			content ''
+
+		&:hover
+			cursor pointer
+			width 274px
+
+	
