@@ -17,7 +17,7 @@ table(cellspacing='2', border='0')
 					jv="3";//-->
 				script(language='javascript').
 					//<!--
-					pi="";pi+="\\""+script+"?id="+id+"&img="+img+"&w="+w+"&c="+c+"&ref="+rf+"&jsv="+jv+"&jen="+je+"\"";pi="<a href=http://www.topping.com.ua/ target=_blank><img src="+pi+" width=88 height=31 border=0 alt=\"Rated by PING\"></a>";d.write(pi);//-->
+					pi="";pi+="\""+script+"?id="+id+"&img="+img+"&w="+w+"&c="+c+"&ref="+rf+"&jsv="+jv+"&jen="+je+"\"";pi="<a href=http://www.topping.com.ua/ target=_blank><img src="+pi+" width=88 height=31 border=0 alt=\"Rated by PING\"></a>";d.write(pi);//-->
 				noscript
 					a(href='http://www.topping.com.ua/rating/donetsk/', target='_blank')
 						img(src='http://counter.topping.com.ua:80/cgi-bin/ping.cgi?112802155341;count30', alt='Rated by PING', width='88', height='31', border='0')
@@ -42,7 +42,7 @@ table(cellspacing='2', border='0')
 					d.write('<a href="http://top.mail.ru/jump?from=407990" target="_top">'+
 					'<img src="http://d9.c3.b6.a0.top.mail.ru/counter?id=407990;t=56;js='+js+
 					a+';rand='+Math.random()+'" alt="Рейтинг@Mail.ru" border="0" '+
-					'height="31" width="88"><\\/a>');if(11<js)d.write('<'+'!-- ');//-->
+					'height="31" width="88"></a>');if(11<js)d.write('<'+'!-- ');//-->
 				noscript
 					a(target='_top', href='http://top.mail.ru/jump?from=407990')
 						img(src='http://d9.c3.b6.a0.top.mail.ru/counter?js=na;id=407990;t=56', alt='Рейтинг@Mail.ru', width='88', height='31', border='0')
@@ -89,6 +89,6 @@ table(cellspacing='2', border='0')
 					screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 					";"+Math.random()+
 					"' alt='' title='LiveInternet' "+
-					"border='0' width='1' height='1'><\\/a>")
+					"border='0' width='1' height='1'></a>")
 					//-->
 					// /LiveInternet

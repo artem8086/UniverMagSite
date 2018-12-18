@@ -1,10 +1,22 @@
 .main-menu
 	border-top 1px solid #007
 	border-bottom 1px solid #007
+	box-sizing content-box
 	background-color #22f
+	&.fixed
+		position fixed
+		top 0
+		left 0
+		width 100%
+		opacity .5
+		z-index 10
+		transition opacity .25s ease-in-out
+		& + .container-wraper .container
+			padding-top 74px
+		&:hover
+			opacity 1
 	.container
 		display flex
-		box-sizing content-box
 
 .menu-button
 	display inline-flex
@@ -55,4 +67,3 @@
 		left 0
 		width 100%
 		visibility visible
-	

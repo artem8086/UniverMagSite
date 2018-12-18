@@ -1,0 +1,21 @@
+include ../blocks/page-basic
+
++page({
+		ru: 'index.htm',
+		ua: 'indexu.htm',
+		en: 'indexe.htm'
+	})
+	#summary.container.hidden
+	#biography.container.hidden
+	#abstract.container.hidden
+		br
+		br
+		a(href='#test') test
+		- for (var i = 0; i < 300; i++) {
+			br
+		- }
+		#test test
+	#library.container.hidden
+	#links.container.hidden
+	#searching_report.container.hidden
+	#individual.container.hidden
