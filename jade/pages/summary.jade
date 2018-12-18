@@ -1,12 +1,9 @@
-extends ../blocks/layout-default
+include ../blocks/page-basic
 
-block head
-	title= locale('title_summary')
-	meta(charset='utf-8')
-	meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
-
-	link(rel='stylesheet' href='css/main.css')
-block content
-	include ../blocks/main-menu
-
-	script(src='js/main.js')
++page(
+	'title_summary',
+	{
+		ru: 'index.htm',
+		ua: 'indexu.htm',
+		en: 'indexe.htm'
+	})

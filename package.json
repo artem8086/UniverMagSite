@@ -28,6 +28,7 @@
     "gulp-coffee": "^3.0.2",
     "gulp-connect": "^5.6.1",
     "gulp-copy": "^4.0.1",
+    "gulp-dest": "^0.2.3",
     "gulp-jade": "^1.1.0",
     "gulp-rollup": "^2.16.2",
     "gulp-sourcemaps": "^2.6.4",

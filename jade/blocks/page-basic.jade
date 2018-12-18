@@ -1,0 +1,38 @@
+include ../../node_modules/bemto.jade/bemto
+include ../../node_modules/jade-injected/jade-injected
+
+- set_bemto_settings({ modifier: '--' })
+
+mixin page(title, lang_links)
+	- var langLinks = lang_links
+
+	doctype html
+	html(lang=lang)
+	head
+		title= locale(title) + ' - ' + locale('author_full_name') + ' - ' + locale('thesis')
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
+
+		link(rel='stylesheet' href='css/main.css')
+		style.
+			.hidden {
+				display: none;
+			}
+	body
+		//- include ../blocks/main-menu
+		.header.container-wraper.js-loader.hidden
+			.container
+				include header
+
+		.content.content-wrapper.js-loader.hidden
+			.container
+				block
+
+		.footer.container-wrapper.js-loader.hidden
+			.container
+
+		include ../blocks/preloader
+
+		
+		script(src="https://code.jquery.com/jquery-3.3.1.min.js")
+		script(src='js/main.js')

@@ -1,5 +1,6 @@
 gulp = require 'gulp'
 jade = require 'gulp-jade'
+dest = require 'gulp-dest'
 connect = require 'gulp-connect'
 stylus = require 'gulp-stylus'
 coffee = require 'gulp-coffee'
@@ -9,7 +10,6 @@ rollup = require 'gulp-rollup'
 copy = require 'gulp-copy'
 sourcemaps = require 'gulp-sourcemaps'
 autoprefixer = require 'gulp-autoprefixer'
-
 
 gulp.task 'assets', ->
 	gulp.src 'assets/**/*.*'
@@ -25,7 +25,9 @@ gulp.task 'jade', (done) ->
 	gulp.src 'jade/*.jade'
 		.pipe jade()
 			.on 'error', console.log
-		.pipe gulp.dest 'dist'
+		.pipe dest 'dist',
+			ext: '.htm'
+		.pipe gulp.dest './'
 		.pipe do connect.reload
 
 gulp.task 'stylus', (done) ->

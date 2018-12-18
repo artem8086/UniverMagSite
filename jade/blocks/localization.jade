@@ -1,11 +1,27 @@
 -
 	function locale(key, language) {
-		return langDB[language || lang][key]
+		var vals = langDB[language || lang];
+		if (vals && vals[key]) {
+			return vals[key];
+		} else {
+			return key;
+		}
 	}
 
 	var lang = null,
+		allLangs = [
+			'ru', 'ua', 'en'
+		],
 		langDB = {
 			ru: {
-				title_summary: 'Резюме - Святоха Артём Алесандрович'
+				ru: 'РУС',
+				ua: 'УКР',
+				en: 'АНГЛ',
+				donntu: 'ДонНТУ',
+				magister_portal: 'Портал магистров',
+				loading: 'Загрузка...',
+				title_summary: 'Резюме',
+				author_full_name: 'Святоха Артём Алесандрович',
+				thesis: 'тема диплома'
 			}
 		};

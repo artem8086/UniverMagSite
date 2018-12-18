@@ -1,0 +1,15 @@
+.topmenu.clearfix
+	.lang-selector.left
+		- for (var l in allLangs) {
+			- var tLang = allLangs[l];
+			- if (tLang != lang) {
+				a(class='icon-link icon-link--' + tLang href=langLinks[tLang])= locale(tLang)
+			- }
+		- }
+
+	.donntu-links.right
+		+b.A.icon-link--donntu(href='http://donntu.org/' target='_blank')= locale('donntu')
+		+b.A.icon-link--mportal(href='http://masters.donntu.org/' target='_blank')= locale('magister_portal')
+
++b.head.zx-border
+	
