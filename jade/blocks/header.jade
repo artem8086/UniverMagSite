@@ -3,13 +3,22 @@
 		- for (var l in allLangs) {
 			- var tLang = allLangs[l];
 			- if (tLang != lang) {
-				a(class='icon-link icon-link--' + tLang href=langLinks[tLang])= locale(tLang)
+				+b.A.icon-link--langs(class='--' + tLang href=langLinks[tLang] data-text=locale(tLang))
 			- }
 		- }
 
 	.donntu-links.right
-		+b.A.icon-link--donntu(href='http://donntu.org/' target='_blank')= locale('donntu')
-		+b.A.icon-link--mportal(href='http://masters.donntu.org/' target='_blank')= locale('magister_portal')
+		+b.A.icon-link--donntu.--grayscale(href='http://donntu.org/' target='_blank' data-text=locale('donntu'))
+		+b.A.icon-link--mportal.--grayscale(href='http://masters.donntu.org/' target='_blank' data-text=locale('magister_portal'))
 
-+b.head.zx-border
++b.head.zx-border.clearfix
+	+e.IMG.photo.left(src='img/my_photo.png' alt=locale('my_photo') title=locale('my_photo'))
+	+e.text--bold!= locale('author_full_name')
+	+e.text!= locale('faculty')
+	+e.text!= locale('pulpit')
+	+e.text!= locale('specialty')
+	+e.text--bold!= locale('thesis')
+	+e.text!= locale('scientific_director')
+	
+
 	

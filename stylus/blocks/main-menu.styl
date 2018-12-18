@@ -1,34 +1,58 @@
 .main-menu
-	display flex
+	border-top 1px solid #007
+	border-bottom 1px solid #007
+	background-color #22f
+	.container
+		display flex
+		box-sizing content-box
 
-.mm-wrapper
-	position absolute
-	top 40%
-	right 10%
+.menu-button
+	display inline-flex
+	flex-basis 100%
+	justify-content center
+	height 38px
+	position relative
+	padding 4px 0
+	//padding 8px 20px
+	font-size 26px
+	color #fff
+	text-align center
+	line-height 32px	
+	background-color #22f
+	user-select none
+	transition all .2s ease-in-out
+	border-right 2px solid #00d
+	text-decoration none
+	text-shadow:
+		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 	
-	&__button
-		position relative
-		width 280px
-		margin 4px 0
-		padding 8px 20px
-		font-size 24px
-		text-align right
-		background-image linear-gradient(to right, transparent 15%, rgba(180, 180, 180, .7))
-		user-select none
-		transition all .2s ease-in-out
-
-		&:after
-			position absolute
-			top 0
-			right 0
-			display block
-			width 4px
-			height 100%
-			background-color #00f
-			content ''
-
-		&:hover
-			cursor pointer
-			width 274px
-
+	&:link
+	&:visited
+		color #fff
+		text-decoration none
+	
+	&:first-of-type
+		border-left 2px solid #00d
+	
+	&:hover
+		background-color #44f
+	
+	&:before
+		content ""
+		display block
+		position absolute
+		left 50%
+		bottom -2px
+		width 0%
+		visibility hidden
+		border-bottom 4px solid #fff
+		transition all 0.25s ease-in-out
+	
+	&.active::before
+		left 0
+		width 100%
+		visibility visible
 	

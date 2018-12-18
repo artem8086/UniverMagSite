@@ -3,13 +3,12 @@ include ../../node_modules/jade-injected/jade-injected
 
 - set_bemto_settings({ modifier: '--' })
 
-mixin page(title, lang_links)
+mixin page(lang_links)
 	- var langLinks = lang_links
 
 	doctype html
 	html(lang=lang)
 	head
-		title= locale(title) + ' - ' + locale('author_full_name') + ' - ' + locale('thesis')
 		meta(charset='utf-8')
 		meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
 
@@ -18,12 +17,18 @@ mixin page(title, lang_links)
 			.hidden {
 				display: none;
 			}
-	body
-		//- include ../blocks/main-menu
+	body(
+		data-default-page="#summary"
+		data-title=' - ' + locale('author_full_name') + ' - ' + locale('thesis')
+	)
 		.header.container-wraper.js-loader.hidden
 			.container
 				include header
 
+		.main-menu.container-wraper.js-loader.hidden
+			.container
+				include main-menu
+			
 		.content.content-wrapper.js-loader.hidden
 			.container
 				block

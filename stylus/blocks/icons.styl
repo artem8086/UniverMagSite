@@ -1,20 +1,10 @@
 .icon-link
 	display inline-block
-	font-weight 300
-	text-decoration none
-	vertical-align middle
 	position relative
-	line-height 24px
-	margin 1px 10px 1px 1px
-	padding-left 30px
-	
-	
-	&:active
-		margin-top 2px
-		margin-bottom 0
-	
+	padding 0 10px 0 30px
+
 	&:last-of-type
-		margin-right 1px
+		padding-right 0
 
 	&:link
 	&:visited
@@ -29,21 +19,34 @@
 		height 24px
 		margin-right 6px
 	
-	&--ru:before
+	&:after
+		display inline-block
+		content attr(data-text)
+		text-decoration none
+		line-height 24px
+		font-weight 300
+		vertical-align middle
+		color #000
+	
+	&--langs:before
 		background url('../img/lang-icons.png') no-repeat
+
+	&--ru:before
 		background-position 0 0
 
 	&--ua:before
-		background url('../img/lang-icons.png') no-repeat
 		background-position 0 -24px
 
 	&--en:before
-		background url('../img/lang-icons.png') no-repeat
 		background-position 0 -48px
 
-	&--donntu
+	&--donntu:before
 		background url('//donntu.org/sites/all/themes/donntu/images/icon.png') no-repeat
+
+	&--grayscale
+		filter grayscale(100%)
 	
-	&--mportal
-		background url('//masters.donntu.org/favicon.ico') no-repeat
+	&--mportal:before
+		background url('../img/icon_masters.png') no-repeat
 		background-size contain
+		width 27px

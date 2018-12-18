@@ -3,7 +3,6 @@
 @import 'blocks/*'
 
 body
-	overflow hidden
 	background-color #ddd
 	
 .screen
@@ -18,12 +17,13 @@ body
 	background-color #fff
 	border 2px solid #000
 	border-top 20px solid #000
-	&:after
+	box-shadow 0 0 5px rgba(1,1,1,0.5)
+	&:before
 		display block
 		content ''
 		position absolute
 		top -20px
-		right 20px
+		right 40px
 		width 80px
 		height 20px
 		background #000 linear-gradient(to right, #f00, #f00 25%, #ff0 25%, #ff0 50%, #0f0 50%, #0f0 75%, #00f 75%, #00f)
