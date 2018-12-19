@@ -1,0 +1,49 @@
+@media all and (max-width: 768px)
+	.topmenu
+		position fixed
+		top 0
+		left 0
+		z-index 10
+		padding 8px
+		background-color #000
+		&:before
+			display block
+			content ''
+			position absolute
+			top 0px
+			right 72px
+			width 144px
+			height 100%
+			background #000 linear-gradient(to right, #f00, #f00 25%, #ff0 25%, #ff0 50%, #0f0 50%, #0f0 75%, #00f 75%, #00f)
+			transform skewX(-45deg)
+	
+	.icon-link
+		&:after
+			color #fff
+
+	.donntu-links
+		display none
+
+	.head
+		margin-top 36px
+		z-index 1
+		border-bottom 1px solid #777 !important
+		&.zx-border
+			box-shadow none
+			border-top none
+			&:before
+				display none
+				// height 36px
+				// top -36px
+		&__photo
+			width 35%
+
+		&__text
+			font-size 18px
+
+			&--bold
+				font-size 22px
+	
+	.main-menu
+		display none
+		

@@ -2,13 +2,10 @@
 	display inline-block
 	position relative
 	padding 0 10px 0 30px
+	height 24px
 
 	&:last-of-type
 		padding-right 0
-
-	&:link
-	&:visited
-		color #000
 
 	&:before
 		display inline-block
@@ -19,6 +16,9 @@
 		height 24px
 		margin-right 6px
 	
+	&:hover:after
+		text-decoration underline
+
 	&:after
 		display inline-block
 		content attr(data-text)
@@ -42,6 +42,7 @@
 
 	&--donntu
 		padding-left 33px
+		height 27px
 		&:before
 			background url('../img/donntu_icon.png') no-repeat
 			width 27px
@@ -52,6 +53,7 @@
 	
 	&--mportal
 		padding-left 36px
+		height 25px
 		&:before
 			background url('../img/icon_masters.png') no-repeat
 			width 30px

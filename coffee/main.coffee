@@ -32,19 +32,29 @@ load = ->
 			top = elem.offset().top
 			$('body,html').animate scrollTop: top, 1000
 
-	$(window).on 'popstate', stateChange
+	$window = $ window
+	$window.on 'popstate', stateChange
 
 	# fixed menu
-	elem = $ '.main-menu'
-	head_height = elem.offset().top
-	head_mrg = 0
-	$(window).scroll ->
-		top = $(this).scrollTop()
+	main_menu = $ '.main-menu'
+	head_height = main_menu.offset().top
+	onScroll = ->
+		top = $window.scrollTop()
 		if top < head_height
-			elem.removeClass 'fixed'
+			main_menu.removeClass 'fixed'
 		else
-			elem.addClass 'fixed'
+			main_menu.addClass 'fixed'
 
+	do onResize = ->
+		head_height = main_menu.offset().top
+		if $window.width() <= 768
+			$window.unbind 'scroll', onScroll
+			main_menu.removeClass 'fixed'
+		else
+			$window.scroll onScroll
+			do onScroll
+
+	$window.resize onResize
 
 $(document).ready ->
 	setTimeout (->
