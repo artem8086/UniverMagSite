@@ -1,6 +1,7 @@
 .topmenu
+	position relative
 	width 100%
-	padding 6px 0	
+	padding 6px 0
 
 .head
 	padding 30px 50px
@@ -22,4 +23,86 @@
 			padding-bottom 4px
 			font-size 26px
 			font-weight 700
-		
+
+.nav
+	&-menu
+		display none
+		margin -8px 0
+		&.active
+			.nav-wrapper
+				visibility visible
+			.nav-list
+				visibility visible
+				transform translate(0, 0)
+				opacity 1
+			.nav-button
+				&:before
+					transform rotateZ(45deg)
+				&:after
+					transform rotateZ(-45deg)
+				&:before
+				&:after
+					height 2px
+					width 28px
+				span
+					width 0
+					transform translate(50%, 0)
+	&-button
+		position relative
+		padding 18px 7px
+		width 40px
+		height 40px
+		cursor pointer
+
+		&:before
+		&:after
+		span
+			content ''
+			position absolute
+			display block
+			width 26px
+			height 4px
+			background-color #fff
+			transform-origin 0 0
+			transition all .2s ease-in-out
+		&:before
+			top 9px
+		&:after
+			bottom 9px
+	&-list
+		visibility hidden
+		padding 4px
+		position absolute
+		transform translate(0, -100%)
+		left 0
+		width 100%
+		height 100%
+		background-color #ddd
+		opacity 0
+		z-index 5
+		transition all .5s ease-in-out
+		hr
+			margin 8px 0
+
+	&-wrapper
+		position absolute
+		left 0
+		overflow scroll
+		width 100%
+		height calc(100vh - 40px)
+		visibility hidden
+
+	&-link
+		display block !important
+		padding-top 8px !important
+		padding-bottom 8px !important
+		height auto !important
+		color #000
+		text-decoration none
+		&.active
+			background-color #777 !important
+		&:after
+			display block !important
+			color #000 !important
+		&:nth-child(even)
+			background-color #eee

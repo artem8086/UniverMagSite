@@ -1,0 +1,17 @@
+-
+	function locale(key, language) {
+		var vals = langDB[language || lang];
+		if (vals && vals[key]) {
+			return vals[key];
+		} else {
+			return key;
+		}
+	}
+
+	var lang = null,
+		allLangs = [
+			'ru', 'ua', 'en'
+		],
+		langDB = {};
+
+include locale_ru

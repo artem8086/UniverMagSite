@@ -1,26 +1,21 @@
 $('.preloader').removeClass 'hidden'
 
 load = ->
-	addActive = ->
-		$('.js-buttom-page').each ->
-			button = $(this)
-			button.removeClass 'active'
-			$(button.attr 'href').addClass 'hidden'
-		#
-		$this = $(this)
-		$this.addClass 'active'
-		$($this.attr('href')).removeClass 'hidden'
-		$(document).prop 'title', $this.text() + $(document.body).attr 'data-title'
-
 	do stateChange = ->
 		hash = window.location.hash || $(document.body).attr 'data-default-page'
 		jump = false
 		$('.js-buttom-page').each ->
 			button = $(this)
-			button.click addActive
+			elem = $ button.attr 'href'
 			if hash == button.attr 'href'
-				addActive.call button
+				button.addClass 'active'
+				elem.removeClass 'hidden'
+				$(document).prop 'title', button.text() + $(document.body).attr 'data-title'
 				jump = true
+			else
+				button.removeClass 'active'
+				elem.addClass 'hidden'
+		#
 		if not jump
 			elem = $ hash
 			container = elem.closest '.container'
@@ -28,7 +23,9 @@ load = ->
 			$('.js-buttom-page').each ->
 				button = $(this)
 				if id == button.attr 'href'
-					addActive.call button
+					button.addClass 'active'
+					container.removeClass 'hidden'
+					$(document).prop 'title', button.text() + $(document.body).attr 'data-title'
 			top = elem.offset().top
 			$('body,html').animate scrollTop: top, 1000
 
@@ -55,6 +52,20 @@ load = ->
 			do onScroll
 
 	$window.resize onResize
+
+	nav_menu = $ '.nav-menu'
+	closeMenu = ->
+		$('body, html').removeClass 'overlay'
+		nav_menu.removeClass 'active'
+
+	$('.nav-link').click closeMenu
+
+	$('.nav-button').click ->
+		if nav_menu.hasClass 'active'
+			do closeMenu
+		else
+			nav_menu.addClass 'active'
+			$('body, html').addClass 'overlay'
 
 $(document).ready ->
 	setTimeout (->

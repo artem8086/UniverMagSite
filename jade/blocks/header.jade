@@ -1,3 +1,6 @@
+include donntu_links
+include main-menu
+
 .topmenu.clearfix
 	.lang-selector.left
 		- for (var l in allLangs) {
@@ -8,8 +11,16 @@
 		- }
 
 	.donntu-links.right
-		+b.A.icon-link--donntu.--grayscale(href='http://donntu.org/' target='_blank' data-text=locale('donntu'))
-		+b.A.icon-link--mportal.--grayscale(href='http://masters.donntu.org/' target='_blank' data-text=locale('magister_portal'))
+		+donntu_links
+	.nav-menu.right
+		.nav-button
+			span
+		.nav-wrapper
+			.nav-list
+				+donntu_links('nav-link')
+				hr
+				+main-menu('icon-link nav-link')
+
 
 +b.head.zx-border.clearfix
 	+e.IMG.photo.left(src='img/my_photo.png' alt=locale('my_photo') title=locale('my_photo'))
