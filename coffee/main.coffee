@@ -2,7 +2,12 @@ $('.preloader').removeClass 'hidden'
 
 load = ->
 	do stateChange = ->
-		hash = window.location.hash || $(document.body).attr 'data-default-page'
+		hash = window.location.hash
+		if hash
+			isIndex = false
+		else
+			isIndex = true
+			hash = $(document.body).attr 'data-default-page'
 		jump = false
 		$('.js-buttom-page').each ->
 			button = $(this)
@@ -16,8 +21,8 @@ load = ->
 				button.removeClass 'active'
 				elem.addClass 'hidden'
 		#
+		elem = $ hash
 		if not jump
-			elem = $ hash
 			container = elem.closest '.container'
 			id = '#' + container.attr 'id'
 			$('.js-buttom-page').each ->
@@ -26,6 +31,7 @@ load = ->
 					button.addClass 'active'
 					container.removeClass 'hidden'
 					$(document).prop 'title', button.text() + $(document.body).attr 'data-title'
+		if not isIndex
 			top = elem.offset().top
 			$('body,html').animate scrollTop: top, 1000
 
