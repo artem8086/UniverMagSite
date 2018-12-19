@@ -59,6 +59,9 @@ load = ->
 
 	$window.resize onResize
 
+	$('.table__head').click ->
+		$(this).toggleClass 'is-open'
+
 	nav_menu = $ '.nav-menu'
 	closeMenu = ->
 		$('body, html').removeClass 'overlay'

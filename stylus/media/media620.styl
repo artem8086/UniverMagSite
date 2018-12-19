@@ -3,13 +3,60 @@
 		&:after
 			display none
 	.head
-		padding-right 18px
-		padding-left 18px
+		padding-right 12px
+		padding-left 12px
 		&__photo
 			margin 0 5% 32px
 			width 90% !important
 
 	.content
 		.container
-			padding-right 18px
-			padding-left 18px
+			padding-right 12px
+			padding-left 12px
+	
+	.table
+		display block
+		
+		&__row
+			display block
+			margin 8px 0
+			box-shadow 0 0 5px rgba(1,1,1,0.7)
+			&:nth-of-type(odd)
+				background-color #fff
+			&:hover
+				background-color #fff
+
+		&__cell
+		&__head
+			display block
+			border 1px solid #777
+			text-align left
+		&__head
+			position relative
+			width 100%
+			border-radius 3px
+			background-color #eee
+			user-select none
+			&.is-open
+				border-radius 3px 3px 0 0
+				&:after
+					transform rotateZ(45deg)
+			&.is-open + .table__cell
+					display block
+			&:after
+				display block
+				content ''
+				position absolute
+				top 10px
+				right 10px
+				width 8px
+				height 8px
+				border-top 3px solid  #777
+				border-left 3px solid  #777
+				transform-origin 40% 40%
+				transform rotateZ(-135deg)
+				transition transform .2s ease-in-out
+		&__cell
+			display none
+			border-top none
+			border-radius 0 0 3px 3px
