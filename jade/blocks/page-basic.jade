@@ -10,37 +10,40 @@ mixin page(lang_links)
 
 	doctype html
 	html(lang=lang)
-	head
-		title= locale('author_full_name') + ' - ' + locale('thesis')
-		meta(charset='utf-8')
-		meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
+		head
+			meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+			title!= locale('author_full_name') + ' &ndash; ' + locale('thesis')
+			meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
 
-		link(rel='stylesheet' href='css/main.css')
-		style.
-			.hidden {
-				display: none;
-			}
-	body(
-		data-default-page="#summary"
-		data-title=' - ' + locale('author_full_name') + ' - ' + locale('thesis')
-	)
-		.header.container-wrapper.js-loader.hidden
-			.container
-				include header
+			meta(name='author' content=locale('author_full_name'))
+			link(rel="icon" type='image/png' href='img/icon_masters.png')
 
-		.main-menu.container-wrapper.js-loader.hidden
-			.container
-				+main-menu('menu-button')
-			
-		.content.container-wrapper.js-loader.hidden
-			block
+			link(rel='stylesheet' href='css/main.css')
+			style.
+				.hidden {
+					display: none;
+				}
+		body(
+			data-default-page="#summary"
+			data-title!=' &ndash; ' + locale('author_full_name') + ' &ndash; ' + locale('thesis')
+		)
+			.header.container-wrapper.js-loader.hidden
+				.container
+					include header
 
-		.footer.container-wrapper.js-loader.hidden
-			center.container
-				include footer
+			.main-menu.container-wrapper.js-loader.hidden
+				.container
+					+main-menu('menu-button')
+				
+			.content.container-wrapper.js-loader.hidden
+				block
 
-		include ../blocks/preloader
+			.footer.container-wrapper.js-loader.hidden
+				center.container
+					include footer
 
-		
-		script(src="https://code.jquery.com/jquery-3.3.1.min.js")
-		script(src='js/main.js')
+			include ../blocks/preloader
+
+
+			script(src="https://code.jquery.com/jquery-3.3.1.min.js")
+			script(src='js/main.js')

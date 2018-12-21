@@ -1,4 +1,4 @@
-+b.H1.summary-header!= locale('short_summary')
+h1!= locale('short_summary')
 
 +b.table
 	+e.row
@@ -10,3 +10,12 @@
 	+e.row
 		+e.head!= locale('location_birthday')
 		+e.cell!= locale('location_birthday_my')
+	+e.row
+		+e.head!= locale('school')
+		+e.cell!= locale('school_my')
+	+e.row
+		+e.head!= locale('university')
+		+e.cell!= locale('university_my')
+	+e.row
+		+e.head!= locale('average_rating')
+		+e.cell!= locale('average_rating_my')
