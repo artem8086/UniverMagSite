@@ -7,9 +7,11 @@ include ../blocks/page-basic
 	})
 	#summary.container.hidden
 		include summary
-	#biography.container.hidden
+	if lang != 'en'
+		#biography.container.hidden
 	#abstract.container.hidden
-	#library.container.hidden
-	#links.container.hidden
-	#searching_report.container.hidden
-	#individual.container.hidden
+	if lang == 'ru'
+		#library.container.hidden
+		#links.container.hidden
+		#searching_report.container.hidden
+		#individual.container.hidden

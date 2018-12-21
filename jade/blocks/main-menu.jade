@@ -1,8 +1,10 @@
 mixin main-menu(className)
 	a.js-buttom-page(class=className href='#summary')= locale('summary')
-	a.js-buttom-page(class=className href='#biography')= locale('biography')
+	if lang != 'en'
+		a.js-buttom-page(class=className href='#biography')= locale('biography')
 	a.js-buttom-page(class=className href='#abstract')= locale('abstract')
-	a.js-buttom-page(class=className href='#library')= locale('library')
-	a.js-buttom-page(class=className href='#links')= locale('links')
-	a.js-buttom-page(class=className href='#searching_report')= locale('searching_report')
-	a.js-buttom-page(class=className href='#individual')= locale('individual')
+	if lang == 'ru'
+		a.js-buttom-page(class=className href='#library')= locale('library')
+		a.js-buttom-page(class=className href='#links')= locale('links')
+		a.js-buttom-page(class=className href='#searching_report')= locale('searching_report')
+		a.js-buttom-page(class=className href='#individual')= locale('individual')
