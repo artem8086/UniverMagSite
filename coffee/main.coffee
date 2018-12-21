@@ -49,11 +49,11 @@ load = ->
 			main_menu.addClass 'fixed'
 
 	do onResize = ->
-		head_height = main_menu.offset().top
 		if $window.width() <= 768
 			$window.unbind 'scroll', onScroll
 			main_menu.removeClass 'fixed'
 		else
+			head_height = main_menu.offset().top
 			$window.scroll onScroll
 			do onScroll
 
