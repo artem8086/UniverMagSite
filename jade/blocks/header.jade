@@ -23,7 +23,8 @@ include main-menu
 
 
 +b.head.zx-border.clearfix
-	+e.IMG.photo.left(src='img/my_photo.png' alt=locale('my_photo') title=locale('my_photo'))
+	+e.A.photo.left(href='img/my_photo_big.jpg')
+		img(src='img/my_photo.png' alt=locale('my_photo') title=locale('my_photo'))
 	+e.text--bold!= locale('author_full_name')
 	+e.text!= locale('faculty')
 	+e.text!= locale('pulpit')
