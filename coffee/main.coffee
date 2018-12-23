@@ -37,6 +37,7 @@ load = ->
 
 	$window = $ window
 	$window.on 'popstate', stateChange
+	# $('.js-buttom-page').click stateChange
 
 	# fixed menu
 	main_menu = $ '.main-menu'
