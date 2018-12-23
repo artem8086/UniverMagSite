@@ -19,10 +19,7 @@ mixin page(lang_links)
 			link(rel="icon" type='image/png' href='img/icon_masters.png')
 
 			link(rel='stylesheet' href='css/main.css')
-			style.
-				.hidden {
-					display: none;
-				}
+			style .hidden {display: none;}
 		body(
 			data-default-page="#summary"
 			data-title!=' &ndash; ' + locale('author_full_name') + ' &ndash; ' + locale('thesis')
@@ -39,7 +36,7 @@ mixin page(lang_links)
 				block
 
 			.footer.container-wrapper.js-loader.hidden
-				center.container
+				.container
 					include footer
 
 			include ../blocks/preloader

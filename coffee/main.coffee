@@ -33,7 +33,7 @@ load = ->
 					$(document).prop 'title', button.text() + $(document.body).attr 'data-title'
 		if not isIndex
 			top = elem.offset().top
-			$('body,html').animate scrollTop: top, 1000
+			$('body,html').animate scrollTop: top, 250
 
 	$window = $ window
 	$window.on 'popstate', stateChange
@@ -81,4 +81,4 @@ $(document).ready ->
 		$('.preloader').addClass 'done'
 		$('.js-loader').removeClass 'hidden'
 		do load
-	), 1000
+	), 250
