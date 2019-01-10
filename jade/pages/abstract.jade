@@ -1,0 +1,21 @@
+h1= locale('abstract')
+p.comment= locale('abs_comment')
+
+h2= locale('content')
+ul.content-list
+	li
+		a(href='#introduction')= locale('introduction')
+	li
+		a(href='#theme_urgency')= locale('theme_urgency')
+	li
+		a(href='#goals')= locale('goals')
+	li
+		a(href='#conclusion')= locale('conclusion')
+	li
+		a(href='#references')= locale('references')
+
+h2#introduction= locale('introduction')
+
+p!= locale('abs_p1_1')
+p!= locale('abs_p1_2')
+p!= locale('abs_p1_3')
