@@ -41,24 +41,25 @@ load = ->
 
 	# fixed menu
 	main_menu = $ '.main-menu'
-	head_height = main_menu.offset().top
-	onScroll = ->
-		top = $window.scrollTop()
-		if top < head_height
-			main_menu.removeClass 'fixed'
-		else
-			main_menu.addClass 'fixed'
+	if main_menu.length
+		head_height = main_menu.offset().top
+		onScroll = ->
+			top = $window.scrollTop()
+			if top < head_height
+				main_menu.removeClass 'fixed'
+			else
+				main_menu.addClass 'fixed'
 
-	do onResize = ->
-		if $window.width() <= 768
-			$window.unbind 'scroll', onScroll
-			main_menu.removeClass 'fixed'
-		else
-			head_height = main_menu.offset().top
-			$window.scroll onScroll
-			do onScroll
+		do onResize = ->
+			if $window.width() <= 768
+				$window.unbind 'scroll', onScroll
+				main_menu.removeClass 'fixed'
+			else
+				head_height = main_menu.offset().top
+				$window.scroll onScroll
+				do onScroll
 
-	$window.resize onResize
+		$window.resize onResize
 
 	$('.table__head').click ->
 		$(this).toggleClass 'is-open'

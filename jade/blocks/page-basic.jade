@@ -4,6 +4,7 @@ include ../../node_modules/jade-injected/jade-injected
 - set_bemto_settings({ modifier: '--' })
 
 include main-menu
+include images
 
 mixin page(lang_links)
 	- var langLinks = lang_links
@@ -44,10 +45,3 @@ mixin page(lang_links)
 
 			script(src="https://code.jquery.com/jquery-3.3.1.min.js")
 			script(src='js/main.js')
-
-- var img_indx = 1;
-mixin image(link, caption)
-	- caption = locale(caption);
-	+b.img&attributes(attributes)
-		+e.IMG.image(src=('images/' + link) alt=caption)
-		+e.SPAN.caption!= locale('image') + ' ' + (img_indx++) + ' &ndash; ' + caption

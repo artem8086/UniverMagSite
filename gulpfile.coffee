@@ -30,6 +30,15 @@ gulp.task 'jade', (done) ->
 		.pipe gulp.dest './'
 		.pipe do connect.reload
 
+gulp.task 'libs', (done) ->
+	gulp.src 'libs/*.jade'
+		.pipe jade()
+			.on 'error', console.log
+		.pipe dest 'dist/library',
+			ext: '.htm'
+		.pipe gulp.dest './'
+		.pipe do connect.reload
+
 gulp.task 'stylus', (done) ->
 	gulp.src 'stylus/*.styl'
 		.pipe stylus(compress: on)
@@ -69,6 +78,7 @@ gulp.task 'watch', ->
 gulp.task 'default', [
 	'assets',
 	'jade',
+	'libs',
 	'stylus',
 	'build',
 	'connect',

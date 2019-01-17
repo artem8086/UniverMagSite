@@ -1,0 +1,16 @@
+include donntu_links
+
+.topmenu.clearfix
+	.left
+		+b.A.icon-link--no-icon(href='../index.htm#library' data-text='Назад в библеотеку')
+
+	.donntu-links.right
+		+donntu_links
+	.nav-menu.right
+		.nav-button
+			span
+		.nav-wrapper
+			.nav-list
+				+donntu_links('nav-link')
+
+.head.library.zx-border
