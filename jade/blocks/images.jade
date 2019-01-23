@@ -1,6 +1,6 @@
 - var img_indx = 1;
-mixin image(link, caption)
+mixin image(link, caption, indx)
 	- caption = locale(caption);
 	+b.img&attributes(attributes)
 		+e.IMG.image(src=('images/' + link) alt=caption)
-		+e.SPAN.caption!= locale('image') + ' ' + (img_indx++) + ' &ndash; ' + caption
+		+e.SPAN.caption!= locale('image') + ' ' + (indx ? indx : img_indx++) + ' &ndash; ' + caption

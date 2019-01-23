@@ -71,6 +71,7 @@ gulp.task 'build', (done) ->
 
 gulp.task 'watch', ->
 	gulp.watch 'jade/**/*.jade', ['jade']
+	gulp.watch 'libs/**/*.jade', ['libs']
 	gulp.watch 'stylus/**/*.styl', ['stylus']
 	gulp.watch 'coffee/**/*.coffee', ['build']
 	gulp.watch 'assets/**/*.*', ['assets']
