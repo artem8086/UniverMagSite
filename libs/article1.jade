@@ -6,14 +6,14 @@ include ../jade/blocks/base-lib
 +lib(name, authors)
 	h1= name
 	
-	p.no-indent #[strong Авторы:] Святоха А.А., Мальчева Р.В.
+	p.no-indent #[strong Авторы:] #{authors}
 
-	ul.no-mark
+	ul.content-list
 		li
 			a(href='#intro') Введение
 		li
 			a(href='#p1') 1. Анализ средств и способов моделирования компьютерных систем
-			ul.no-mark
+			ul
 				li
 					a(href='#p1_1') 1.1 Виды моделей
 				li
@@ -21,13 +21,17 @@ include ../jade/blocks/base-lib
 				li
 					a(href='#p1_3') 1.3 Примеры моделей компьютерных систем
 			a(href='#p2') 2. Разработка демонстрационной модели гипотетического компьютера
-			ul.no-mark
+			ul
 				li
 					a(href='#p2_1') 2.1 Анализ объектов моделирования
 				li
-					a(href='#p2_2') 1.2 Анализ средств
+					a(href='#p2_2') 2.2 Обоснование выбора платформы
 				li
-					a(href='#p2_3') 1.3 Примеры моделей компьютерных систем
+					a(href='#p2_3') 2.3 Разработка программной модели
+		li
+			a(href='#conclusion') Выводы
+		li
+			a(href='#literature') Литература
 
 	h1#intro Введение
 	p С каждым годом возрастает роль средств вычислительной техники, при этом все компоненты вычислительных систем располагаются на интегральных микросхемах, не позволяя получить доступ к отдельным узлам или элементам, осложняя тем самым процесс изучения функционирования компьютерных систем и их компонентов.
@@ -80,3 +84,208 @@ include ../jade/blocks/base-lib
 		li - регистры, осуществляющие временное хранение данных и состояний процессора;
 		li - схемы для управления и связи с подсистемами связи и вводы-вывода.
 	p В понимания принципов функционирования и взаимосвязи этих систем, помогает демонстрационная модель гипотетической компьютерной системы. Которая позволяет следить за изменением состояния системы, в любом промежутке её работы.
+
+	+image('sheme3.png', 'Структурная схема рассматриваемой модели', '2.1')
+
+	h2#p2_2 2.2 Обоснование выбора платформы
+	p Для разработки демонстрационной модели были выбраны языки разработки веб приложений HTML5, CSS3 и JavaScript. Выбор базируется на кроссплатформенности платформы веб, запуске приложения без необходимости компиляции, простоту разработки, а также богатыми средствами визуализации и интерактивного взаимодействия с пользователем. К минусам данной платформы можно отнести невысокую производительность (хотя на данный момент благодаря JIT компиляции в байт- и native-код и быстрой обработке DOM, скорость выполнения приложений имеет хорошие показатели, но как следствие возросло потребление памяти). Также стоит отметить что используются только языки для клиентской части, т. е. пользователь может запустить приложение располагая только каким-либо современным браузером, без необходимости настройки серверной части.
+	p Разработка ведётся в тестовом редакторе Sublime Text 3, отладка и запуск выполняется в браузерах Google Chrome и Mozilla Firefox. Также используется средство контроля версий git#[sup #[a(href='#link2')= '[2]']].
+
+	h2#p2_3 2.3 Разработка программной модели
+
+	p Стоит начать с того что весь основной код содержится в функциональном классе Core, который выполняет инициализацию подсистем, пошаговое выполнение команд, а также ввод-вывод данных. Реализация и использование класса Core выглядит следующим образом:
+	code
+		pre.
+			function Core() {
+			    var self = this;
+			    . . . // Основной код
+			}
+			var core = new Core();
+			    core.init();
+			Подсистема памяти инициализируется следующим образом:
+			const MEMORY_SIZE = 256; // Количество слов памяти
+			self.memory = [];
+			for (let addr = 0; addr < MEMORY_SIZE; addr++) {
+				setMemory(addr, 0); // Заполняем память нулями
+			}
+			Регистры описываются следующим образом:
+			self.regs = {
+			        R1: $$('#reg-R1'),
+			        R2: $$('#reg-R2'),
+			        RA: $$('#reg-RA'),
+			        RS: $$('#reg-RS'),
+			        RK: $$('#reg-RK'),
+				   SAK: $$('#reg-SAK')
+			    };
+				self.flags = {
+			            S: $$('#flag-S'),
+			            Z: $$('#flag-Z'),
+			            C: $$('#flag-C'),
+			            E: $$('#flag-E')
+			        };
+
+	p Инициализация регистров начальными значениями выполняется функцией reset:
+	code
+		pre.
+			this.reset = () => {
+			        self.regs.R1.set(0);
+			        self.regs.R2.set(0);
+			        self.regs.RS.set(0);
+			        self.regs.RK.set(0);
+			        self.regs.RA.set(0);
+			        self.regs.SAK.set(9);
+			        self.flags.S.checked = false;
+			        self.flags.Z.checked = false;
+			        self.flags.C.checked = false;
+			        self.flags.E.checked = false;
+				};
+
+	p Функция выборки команд и выделения полей из кода команды:
+	code
+		pre.
+			this.step = () => {
+			    var SAK = self.regs.SAK.get();
+			    var RK = self.memory[SAK];
+			    self.regs.RK.set(RK);
+			    var R = (RK & 0x10) != 0;
+			    var B = (RK >> 5) & 7;
+			    var D = (RK >> 8) & 0xF;
+			    self.regs.RA.set(self.memory[B] + D);
+			    self.regs.SAK.set(SAK + 1);
+			    //
+			    COMMAND_EXEC[RK & 0xF](R);
+			}
+
+	p Для оптимизации процесса выполнения вместо инструкции switch..case используется массив содержащий функции, которые выполняют команду, код которой соответствует индексу массива:
+	code
+		pre.
+			const COMMAND_EXEC = [
+			    (R) => { // HLT
+			        this.pause();
+			        this.regs.SAK.set(this.regs.SAK.get() - 1);
+			    },
+			    (R) => { // RUN
+			        setMemory(8, this.regs.SAK.get());
+			        self.regs.SAK.set(this.regs.RA.get());
+			    },
+			    (R) => { // RET
+			        self.regs.SAK.set(this.memory[8]);
+			    },
+			    (R) => { // LDA
+			        setACC(R, self.memory[self.regs.RA.get()]);
+			    },
+			    (R) => { // SDA
+			        setMemory(self.regs.RA.get(), getACC((R)));
+			    },
+			    (R) => { // JES
+			        if (this.flags.S.checked) {
+			            self.regs.SAK.set(this.regs.RA.get());
+			        }
+			    },
+			    (R) => { // JEZ
+			        if (this.flags.Z.checked) {
+			            self.regs.SAK.set(this.regs.RA.get());
+			        }
+			    },
+			    (R) => { // JMP
+			        self.regs.SAK.set(this.regs.RA.get());
+			    },
+			    (R) => { // ADD
+			        var res = getACC(R) + self.memory[self.regs.RA.get()];
+			        this.flags.Z.checked = (res & 0xFFF) == 0;
+			        this.flags.S.checked = (res & 0x800) != 0;
+			        this.flags.C.checked = (res & (-1 ^ 0xFFF)) != 0;
+			        setACC(R, res);
+			    },
+			    (R) => { // SUB
+			        var res = getACC(R) - self.memory[self.regs.RA.get()];
+			        this.flags.Z.checked = (res & 0xFFF) == 0;
+			        this.flags.S.checked = (res & 0x800) != 0;
+			        this.flags.C.checked = (res & (-1 ^ 0xFFF)) != 0;
+			        setACC(R, res);
+			    },
+			    (R) => { // MUL
+			        var res = getACC(R) * self.memory[self.regs.RA.get()];
+			        this.flags.Z.checked = (res & 0xFFF) == 0;
+			        this.flags.S.checked = (res & 0x800) != 0;
+			        this.flags.C.checked = (res & (-1 ^ 0xFFF)) != 0;
+			        setACC(R, res);
+			    },
+			    (R) => { // DIV
+			        var op = self.memory[self.regs.RA.get()];
+			        if (op != 0) {
+			            var res = getACC(R) / op;
+			            this.flags.Z.checked = (res & 0xFFF) == 0;
+			            this.flags.S.checked = (res & 0x800) != 0;
+			            this.flags.C.checked = (res & (-1 ^ 0xFFF)) != 0;
+			            setACC(R, res);
+			        } else {
+			            console.log('Error! Divizion by zero!');
+			        }
+			    },
+			    (R) => { // AND
+			        var res = getACC(R) & self.memory[self.regs.RA.get()];
+			        this.flags.Z.checked = (res & 0xFFF) == 0;
+			        this.flags.S.checked = (res & 0x800) != 0;
+			        setACC(R, res);
+			    },
+			    (R) => { // OR
+			        var res = getACC(R) | self.memory[self.regs.RA.get()];
+			        this.flags.Z.checked = (res & 0xFFF) == 0;
+			        this.flags.S.checked = (res & 0x800) != 0;
+			        setACC(R, res);
+			    },
+			    (R) => { // XOR
+			        var res = getACC(R) ^ self.memory[self.regs.RA.get()];
+			        this.flags.Z.checked = (res & 0xFFF) == 0;
+			        this.flags.S.checked = (res & 0x800) != 0;
+			        setACC(R, res);
+			    },
+			    (R) => { // INC
+			        var addr = self.regs.RA.get();
+			        var value = self.memory[addr];
+			        value = (value + 1) & 0xFFF;
+			        setMemory(addr, value);
+			        if (this.flags.E.checked = (value == 0)) {
+			            self.regs.SAK.set(self.regs.SAK.get() + 1);
+			        }
+			    },
+			];
+
+	p Рассмотрим код ввода-вывода массива памяти. Для формата ввода-вывода используется JSON (англ. JavaScript Object Notation), который поддерживается всеми браузерами и является текстовым представлением полей объектов.
+	p Код для вывода данных в файл:
+	code
+		pre.
+			this.upload = () => {
+			  var a = document.createElement("a");
+			  var file = new Blob([JSON.stringify(this.memory)],
+			           {type: 'text/plain'});
+			  a.href = URL.createObjectURL(file);
+			  a.download = name;
+			  a.click();
+			};
+			Код для ввода данных из файла:
+			this.load = (file) => {
+			    var fileReader = new FileReader();
+			    fileReader.onload = (e) => {
+			        var dump = JSON.parse(e.target.result);
+			        for (var addr = 0; addr < MEMORY_SIZE; addr++) {
+			            setMemory(addr, dump[addr]);
+			        }
+			    };
+			    fileReader.readAsText(file);
+			};
+
+	h1#conclusion Выводы
+	p Можно сделать следующие выводы, что в данной работе были изучены подсистемы памяти, управление выборкой команд и их выполнения, ввода-вывода, а также виды демонстрационных моделей такие как физические и функциональные.
+	p Была разработана простая функциональная модель гипотетической системы, которая демонстрирует работу устройств управления выборкой и выполнения команд, а также взаимодействие с регистрами и внешней памятью.
+
+	h2#literature Литература
+	ol
+		li#link1 Кириллов  В.В. Архитектура  базовой ЭВМ. – СПб: СПбГУ ИТМО, 2010. – 144 с.
+		li#link2 Репозиторий проекта модели. [Электронный ресурс]. – git репозиторий – Режим доступа:
+			a(href='https://github.com/artem8086/emuG2') https://github.com/artem8086/emuG2
+		li#link3 Сайт Proteus VSM. [Электронный ресурс]. – официальный сайт – Режим доступа:
+			a(href='https://www.labcenter.com') https://www.labcenter.com
+		li#link4 Сайт Tk Gate. [Электронный ресурс]. – официальный сайт – Режим доступа:
+			a(href='http://tkgate.org') http://tkgate.org

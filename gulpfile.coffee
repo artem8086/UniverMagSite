@@ -50,7 +50,7 @@ gulp.task 'stylus', (done) ->
 
 gulp.task 'build', (done) ->
 	gulp.src 'coffee/**/*.coffee'
-		.pipe do sourcemaps.init
+		# .pipe do sourcemaps.init
 		.pipe coffee()
 			.on 'error', console.log
 		.pipe rollup(
@@ -62,7 +62,7 @@ gulp.task 'build', (done) ->
 			).on 'error', console.log
 		.pipe uglify()
 			.on 'error', console.log
-		.pipe do sourcemaps.write
+		# .pipe do sourcemaps.write
 		.pipe gulp.dest 'dist/js'
 		.pipe do connect.reload
 

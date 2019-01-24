@@ -4,18 +4,53 @@ p.comment= locale('abs_comment')
 h2= locale('content')
 ul.content-list
 	li
-		a(href='#introduction')= locale('introduction')
+		a(href='#abs_introduction')= locale('introduction')
 	li
-		a(href='#theme_urgency')= locale('theme_urgency')
+		a(href='#abs_theme_urgency')= locale('abs_theme_urgency')
 	li
-		a(href='#goals')= locale('goals')
+		a(href='#abs_goals')= locale('abs_goals')
+	if lang != 'en'
+		li
+			a(href='#abs_review')= locale('abs_review')
+			ul
+				li
+					a(href='#abs_review_int')= locale('abs_review_int')
+				li
+					a(href='#abs_review_nat')= locale('abs_review_nat')
+				li
+					a(href='#abs_review_loc')= locale('abs_review_loc')
 	li
-		a(href='#conclusion')= locale('conclusion')
+		a(href='#abs_conclusion')= locale('conclusion')
 	li
-		a(href='#references')= locale('references')
+		a(href='#abs_references')= locale('references')
 
-h2#introduction= locale('introduction')
+h2#abs_introduction= locale('introduction')
 
 p!= locale('abs_p1_1')
 p!= locale('abs_p1_2')
 p!= locale('abs_p1_3')
+p!= locale('abs_p1_4')
+
+h2#abs_theme_urgency= locale('abs_theme_urgency')
+
+p!= locale('abs_p2_1')
+
+h2#abs_goals= locale('abs_goals')
+
+p!= locale('abs_p3_1')
+p!= locale('abs_p3_2')
+p!= locale('abs_p3_3')
+
+if lang != 'en'
+	h2#abs_review= locale('abs_review')
+
+	p!= locale('abs_p4_1')
+	p!= locale('abs_p4_2')
+	p!= locale('abs_p4_3')
+
+h2#abs_references= locale('references')
+ol
+	li#abs_link1 Кириллов  В.В. Архитектура  базовой ЭВМ. – СПб: СПбГУ ИТМО, 2010. – 144 с.
+	li#abs_link2 Отчет Google об уязвимостях Meltdown и Spectre. [Электронный ресурс]. – официальный сайт – #[a(href='https://developers.google.com/web/updates/2018/02/meltdown-spectre') https://developers.google.com/web/updates/2018/02/meltdown-spectre]
+	li#abs_link3 Подробный отчет об уязвимостях Meltdown. [Электронный ресурс]. – pdf документ – #[a(href='https://meltdownattack.com/meltdown.pdf') https://meltdownattack.com/meltdown.pdf]
+	li#abs_link4 Подробный отчет об уязвимостях Spectre. [Электронный ресурс]. – pdf документ – #[a(href='https://spectreattack.com/spectre.pdf') https://spectreattack.com/spectre.pdf]
