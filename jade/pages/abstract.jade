@@ -4,25 +4,25 @@ p.comment= locale('abs_comment')
 h2= locale('content')
 ul.content-list
 	li
-		a(href='#abs_introduction')= locale('introduction')
+		+link('#abs_introduction', 'introduction')
 	li
-		a(href='#abs_theme_urgency')= locale('abs_theme_urgency')
+		+link('#abs_theme_urgency', 'abs_theme_urgency')
 	li
-		a(href='#abs_goals')= locale('abs_goals')
+		+link('#abs_goals', 'abs_goals')
 	if lang != 'en'
 		li
-			a(href='#abs_review')= locale('abs_review')
+			+link('#abs_review', 'abs_review')
 			ul
 				li
-					a(href='#abs_review_int')= locale('abs_review_int')
+					+link('#abs_review_int', 'abs_review_int')
 				li
-					a(href='#abs_review_nat')= locale('abs_review_nat')
+					+link('#abs_review_nat', 'abs_review_nat')
 				li
-					a(href='#abs_review_loc')= locale('abs_review_loc')
+					+link('#abs_review_loc', 'abs_review_loc')
 	li
-		a(href='#abs_conclusion')= locale('conclusion')
+		+link('#abs_conclusion', 'conclusion')
 	li
-		a(href='#abs_references')= locale('references')
+		+link('#abs_references', 'references')
 
 h2#abs_introduction= locale('introduction')
 
@@ -51,6 +51,9 @@ if lang != 'en'
 h2#abs_references= locale('references')
 ol
 	li#abs_link1 Кириллов  В.В. Архитектура  базовой ЭВМ. – СПб: СПбГУ ИТМО, 2010. – 144 с.
-	li#abs_link2 Отчет Google об уязвимостях Meltdown и Spectre. [Электронный ресурс]. – официальный сайт – #[a(href='https://developers.google.com/web/updates/2018/02/meltdown-spectre') https://developers.google.com/web/updates/2018/02/meltdown-spectre]
-	li#abs_link3 Подробный отчет об уязвимостях Meltdown. [Электронный ресурс]. – pdf документ – #[a(href='https://meltdownattack.com/meltdown.pdf') https://meltdownattack.com/meltdown.pdf]
-	li#abs_link4 Подробный отчет об уязвимостях Spectre. [Электронный ресурс]. – pdf документ – #[a(href='https://spectreattack.com/spectre.pdf') https://spectreattack.com/spectre.pdf]
+
+	li#abs_link2 Отчет Google об уязвимостях Meltdown и Spectre. [Электронный ресурс]. – официальный сайт – #[+link('https://developers.google.com/web/updates/2018/02/meltdown-spectre')]
+
+	li#abs_link3 Подробный отчет об уязвимостях Meltdown. [Электронный ресурс]. – pdf документ – #[+link('https://meltdownattack.com/meltdown.pdf')]
+
+	li#abs_link4 Подробный отчет об уязвимостях Meltdown. [Электронный ресурс]. – pdf документ – #[+link('https://spectreattack.com/spectre.pdf')]
