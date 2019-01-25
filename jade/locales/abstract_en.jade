@@ -3,7 +3,14 @@
 	lg.abs_comment = 'When writing this essay master\'s work is not yet completed. Final Completion: June 2019. Full text of the work and materials on the topic can be obtained from the author or from his scientific adviser after the specified date.';
 	lg.content = 'Content';
 	lg.introduction = 'Introduction';
-	lg.theme_urgency = '1. Theme urgency';
-	lg.goals = '2. Goal and tasks of the research';
+	lg.abs_theme_urgency = '1. Theme urgency';
+	lg.abs_goals = '2. Goal and tasks of the research';
+	lg.abs_architecture = '3. Main considered architectures and features of processors';
 	lg.conclusion = 'Conclusion';
 	lg.references = 'References';
+
+	lg.abs_p4_1 = 'A superscalar processor<sup><a href="#abs_link10">[10]</a></sup> is a CPU that implements a form of parallelism called instruction-level parallelism within a single processor. In contrast to a scalar processor that can execute at most one single instruction per clock cycle, a superscalar processor can execute more than one instruction during a clock cycle by simultaneously dispatching multiple instructions to different execution units on the processor. It therefore allows for more throughput (the number of instructions that can be executed in a unit of time) than would otherwise be possible at a given clock rate. Each execution unit is not a separate processor (or a core if the processor is a multi-core processor), but an execution resource within a single CPU such as an arithmetic logic unit.';
+
+	lg.abs_p4_2 = 'VLIW architectures<sup><a href="#abs_link9">[9]</a></sup> (Very Long Instruction Word) are distinct from traditional RISC and CISC architectures implemented in current mass-market microprocessors. It is important to distinguish instruction-set architecture—the processor programming model—from implementation—the physical chip and its characteristics. VLIW microprocessors and superscalar implementations of traditional instruction sets share some characteristics—multiple execution units and the ability to execute multiple operations simultaneously. The techniques used to achieve high performance, however, are very different because the parallelism is explicit in VLIW instructions but must be discovered by hardware at run time by superscalar processors. VLIW implementations are simpler for very high performance. Just as RISC architectures permit simpler, cheaper high-performance implementations than do CISCs, VLIW architectures are simpler and cheaper than RISCs because of further hardware simplifications. VLIW architectures, however, require more compiler support.';
+
+	lg.abs_p4_3 = 'Speculative execution is an optimization technique where a computer system performs some task that may not be needed. Work is done before it is known whether it is actually needed, so as to prevent a delay that would have to be incurred by doing the work after it is known that it is needed. If it turns out the work was not needed after all, most changes made by the work are reverted and the results are ignored. ';

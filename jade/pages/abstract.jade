@@ -20,6 +20,8 @@ ul.content-list
 				li
 					+link('#abs_review_loc', 'abs_review_loc')
 	li
+		+link('#abs_architecture', 'abs_architecture')
+	li
 		+link('#abs_conclusion', 'conclusion')
 	li
 		+link('#abs_references', 'references')
@@ -43,17 +45,51 @@ p!= locale('abs_p3_3')
 
 if lang != 'en'
 	h2#abs_review= locale('abs_review')
+	p!= locale('abs_p3_1_1')
+	p!= locale('abs_p3_1_2')
+	p!= locale('abs_p3_1_3')
 
-	p!= locale('abs_p4_1')
-	p!= locale('abs_p4_2')
-	p!= locale('abs_p4_3')
+	h2#abs_review_int= locale('abs_review_int')
+	p!= locale('abs_p3_2_1')
+	p!= locale('abs_p3_2_2')
+
+	h2#abs_review_nat= locale('abs_review_nat')
+	p!= locale('abs_p3_3_1')
+
+	h2#abs_review_loc= locale('abs_review_loc')
+	p!= locale('abs_p3_4_1')
+
+h2#abs_architecture= locale('abs_architecture')
+
+p!= locale('abs_p4_1')
+p!= locale('abs_p4_2')
+p!= locale('abs_p4_3')
+
+h2#abs_conclusion= locale('conclusion')
+
+p!= locale('abs_p5_1')
+p!= locale('abs_p5_2')
 
 h2#abs_references= locale('references')
 ol
-	li#abs_link1 Кириллов  В.В. Архитектура  базовой ЭВМ. – СПб: СПбГУ ИТМО, 2010. – 144 с.
+	li#abs_link1 Кириллов  В.В. Архитектура базовой ЭВМ. – СПб: СПбГУ ИТМО, 2010. – 144 с.
 
-	li#abs_link2 Отчет Google об уязвимостях Meltdown и Spectre. [Электронный ресурс]. – официальный сайт – #[+link('https://developers.google.com/web/updates/2018/02/meltdown-spectre')]
+	li#abs_link2 Отчет Google об уязвимостях Meltdown и Spectre. [Электронный ресурс]. – Режим доступа: #[+link('https://developers.google.com/web/updates/2018/02/meltdown-spectre')]
 
-	li#abs_link3 Подробный отчет об уязвимостях Meltdown. [Электронный ресурс]. – pdf документ – #[+link('https://meltdownattack.com/meltdown.pdf')]
+	li#abs_link3 Meltdown: Reading Kernel Memory from User Space. [Электронный ресурс]. – Режим доступа: #[+link('https://meltdownattack.com/meltdown.pdf')]
 
-	li#abs_link4 Подробный отчет об уязвимостях Meltdown. [Электронный ресурс]. – pdf документ – #[+link('https://spectreattack.com/spectre.pdf')]
+	li#abs_link4 Spectre Attacks: Exploiting Speculative Execution. [Электронный ресурс]. – Режим доступа: #[+link('https://spectreattack.com/spectre.pdf')]
+
+	li#abs_link5 Официальный сайт CPU Sim. [Электронный ресурс]. – Режим доступа: #[+link('http://www.cs.colby.edu/djskrien/CPUSim/')]
+
+	li#abs_link6 Официальный сайт Mikrocodesimulator MikroSim 2010. [Электронный ресурс]. – Режим доступа: #[+link('http://www.mikrocodesimulator.de/index_eng.php')]
+
+	li#abs_link7 Архитектура POSTRISC. [Электронный ресурс]. – Режим доступа: #[+link('http://web.znu.edu.ua/bdp/postrisc/index.htm')]
+
+	li#abs_link8 Танунбаум Э. Архитектура компьютера 4-е ИЗДАНИЕ. - 2003. - 695 с.
+
+	li#abs_link9 Philips Semiconductors. An Introduction To Very-Long Instruction Word (VLIW) Computer Architecture. [Электронный ресурс]. – Режим доступа: #[+link('http://twins.ee.nctu.edu.tw/courses/ca_08/literature/11_vliw.pdf')]
+
+	li#abs_link10 The Microarchitecture of Superscalar Processors. [Электронный ресурс]. – Режим доступа: #[+link('ftp://ftp.cs.wisc.edu/sohi/papers/1995/ieee-proc.superscalar.pdf')]
+
+	li#abs_link11 Спекулятивное выполнение команд. [Электронный ресурс]. – Режим доступа: #[+link('https://en.wikipedia.org/wiki/Speculative_execution')]
