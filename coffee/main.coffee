@@ -38,7 +38,10 @@ load = ->
 				if hash == button.attr 'href'
 					button.addClass 'active'
 					elem.removeClass 'hidden'
-					$(document).prop 'title', button.text() + $(document.body).attr 'data-title'
+					bText = button.attr('data-text')
+					if not bText
+						bText = button.text()
+					$(document).prop 'title', bText + $(document.body).attr 'data-title'
 					jump = true
 				else
 					button.removeClass 'active'
