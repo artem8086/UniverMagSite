@@ -38,7 +38,7 @@ load = ->
 				if hash == button.attr 'href'
 					button.addClass 'active'
 					elem.removeClass 'hidden'
-					bText = button.attr('data-text')
+					bText = button.attr('data-title')
 					if not bText
 						bText = button.text()
 					$(document).prop 'title', bText + $(document.body).attr 'data-title'
